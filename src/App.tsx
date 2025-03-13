@@ -1,7 +1,8 @@
-import './App.css'
+import './css/App.css'
+import LoginForm from './components/LoginForm';
 
 function App() {
-  return <div></div>;
+  return <LoginForm/>;
 }
 
 export default App
