@@ -1,15 +1,18 @@
 import React from "react";
-import { User } from "../types/User";
+import { User} from "../types/User";
+import {useAuthContext} from "../contexts/AuthContext";
 import "../css/LoginForm.css"
 
 export default function LoginForm() {
-    //const [user, setUser] = useState<User | null>(null);
+    const {setIsAuthenticated} = useAuthContext();
 
     const authUserCreds = (user : User) => {
         //TODO: Send login info to laravel backend for auth
         console.log("Authenticating user...");
-        console.log("With email: " + user.email);
-        console.log("With password: " + user.password);
+
+        localStorage.setItem("email", JSON.stringify(user.email)); //Temporary storage of email to mock login routing
+
+        setIsAuthenticated(true);
     }
 
     const onLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
